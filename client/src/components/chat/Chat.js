@@ -28,14 +28,14 @@ const Chat = ({ location }) => {
         }
     }, [ENDPOINT, location.search])
 
-
     return (
         <div className="main">
             <div className='left-panel'>
                 <div className="navbar">Global Chat</div>
                 {/* messaging panel */}
-                <div></div>
-                <div className='input'><Input /></div>
+
+                <div></div> 
+                <div className='input'><Input/></div>
 
             </div>
 
