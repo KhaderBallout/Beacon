@@ -15,13 +15,18 @@ const WelcomePage = () =>{
                <div className="Logo" ><img src = {require('./Beacon.png')} height="135px" width="300px"></img></div>
                <div className="input">
                    <label >Name:&nbsp;&nbsp;&nbsp;</label><input  placeholder="Full name" type="text" onChange={(event) => setName(event.target.value)} />
-                   <br></br><br></br>
+                   <br></br>
+                   <label >Country:</label>
                    <CountryDropdown
+                   className="country"
                    value={country}
                    labelType="short"
                    valueType="short"
                    onChange={(e) => setCountry(e)} />
+                   <br></br>
+                   <label >City:</label>
                    <RegionDropdown
+                   className="country"
                    country={country}
                    value={key}
                    countryValueType="short"

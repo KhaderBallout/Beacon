@@ -16,7 +16,7 @@ body {
   }
   .InnerContainer{
   display: grid;
-  grid-template-rows: 40% 15% ;
+  grid-template-rows: 35% 30% auto;
   width: 80%;
   height: 80vh;
   background-color: white;
@@ -33,11 +33,14 @@ body {
   }
   .input{
     justify-self: center;
+    display: grid;
+    grid-template-rows: auto auto  ;
+
 
   }
   .button{
     text-align: center;
-    margin-top: 40px;
+    margin-top: 60px;
   }
   #button{
     border-radius: 10%;
@@ -45,5 +48,9 @@ body {
     border-color: #4CAF50;
     cursor: pointer;
     padding: 15px 32px;
+    color: white;
+  }
+  .country{
+    background-color: #4CAF50;
     color: white;
   }
