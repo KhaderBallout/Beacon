@@ -1,19 +1,33 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './WelcomePage.css';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+
+
 const WelcomePage = () =>{
     const[name, setName] = useState('');
-    const [country,setCountry]= useState('');
+    const[country,setCountry]= useState('');
+    const[key,setKey]= useState('');
 
     return (
         <div className="OuterContainer">
             <div className ="InnerContainer">
                <div className="Logo" ><img src = {require('./Beacon.png')} height="135px" width="300px"></img></div>
                <div className="input">
-                   Name:&nbsp;&nbsp;&nbsp;<input  placeholder="Full name" type="text" onChange={(event) => setName(event.target.value)} />
-                   Country:<input placeholder="Country name" type="text" onChange={(event) => setCountry(event.target.value)} />
+                   <label >Name:&nbsp;&nbsp;&nbsp;</label><input  placeholder="Full name" type="text" onChange={(event) => setName(event.target.value)} />
+                   <br></br><br></br>
+                   <CountryDropdown
+                   value={country}
+                   labelType="short"
+                   valueType="short"
+                   onChange={(e) => setCountry(e)} />
+                   <RegionDropdown
+                   country={country}
+                   value={key}
+                   countryValueType="short"
+                   onChange={(e) => setKey(e)} />
                 </div>
-               <Link onClick={event => (!name || !country) ? event.preventDefault(): null} to={`/chat?name${name}&country${country}`}>
+               <Link onClick={event => (!name || !(country&&key)) ? event.preventDefault(): null} to={`/chat?name=${name}&country=${country}&key=${key}`}>
                <div className ="button"> <button id="button" type="submit">Enter Global Chat </button></div>
                </Link>
             </div>
