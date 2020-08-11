@@ -4,22 +4,22 @@ const countries = {}; //total number of countries is the length of values
 const messages = []; //total number of messages is the length of the array
 
 
-const addCountry = ({ city, countryCode }) => {
+const addCountry = ({ city, country }) => {
     //convert city or country to Country code
     //https://restcountries.eu/rest/v2/name/{NAME} This is the Api Example to get country code
     var flag;
-    axios.get(`https://restcountries.eu/rest/v2/alpha/${countryCode}`)
+    axios.get(`https://restcountries.eu/rest/v2/alpha/${country}`)
         .then(resp => {
 
             console.log(resp.data);
             flag = resp.data.flag
         });
 
-    if (countries[countryCode]) {
-        countries[countryCode] += 1;
+    if (countries[country]) {
+        countries[country] += 1;
     }
     else {
-        countries[countryCode] = 1;
+        countries[country] = 1;
     }
     console.log(countries)
 

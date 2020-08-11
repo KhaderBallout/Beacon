@@ -19,11 +19,12 @@ server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
 
 //Handling All Socket Emits, Broadcasts, and calls.
 io.on('connection', (socket) => {
-    socket.on('join', ({ name, location }) => {
-        //addUser();
-        //addCountry(location)
-        //socket.broadcast('messages', getMessages());
-        console.log(name, " from ", location.country, " has joined!")
+    socket.on('join', ({ name, country , city }) => {
+        addUser();
+        addCountry(country)
+
+        // socket.broadcast('messages', getMessages());
+        console.log(name, " from ", city , " ", country, " has joined!")
     })
 
     socket.on('send', ({ sender, country, text }) => {
