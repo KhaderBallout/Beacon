@@ -18,13 +18,17 @@ body {
     display: grid;
     grid-template-rows: 35% 30% auto;
 
+
     height: 93vh;
+
     background-color: white;
     justify-self: center;
     border-radius: 5px;
     border-radius: 60px;
     margin-left: 3%;
+
     margin-top: 20px;
+
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
