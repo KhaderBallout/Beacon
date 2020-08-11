@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import {Link} from 'react-router-dom';
 import './WelcomePage.css';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
@@ -14,7 +14,7 @@ const WelcomePage = () =>{
             <div className ="InnerContainer">
                <div className="Logo" ><img src = {require('./Beacon.png')} height="135px" width="300px"></img></div>
                <div className="input">
-                   <label >Name:&nbsp;&nbsp;&nbsp;</label><input  placeholder="Full name" type="text" onChange={(event) => setName(event.target.value)} />
+                   <label >Name:</label><input  placeholder="Full name" type="text" onChange={(event) => setName(event.target.value)} />
                    <br></br>
                    <label >Country:</label>
                    <CountryDropdown
