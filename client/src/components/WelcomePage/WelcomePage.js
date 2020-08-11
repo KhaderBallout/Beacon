@@ -8,9 +8,11 @@ const WelcomePage = () =>{
     return (
         <div className="OuterContainer">
             <div className ="InnerContainer">
-               <div className="Logo" ><img src = "Beacon.png" height="200px" width="300px"></img></div>
-               <div className="input">Name:&nbsp;&nbsp;&nbsp;<input  placeholder="Full name" type="text" onChange={(event) => setName(event.target.value)} /></div>
-               <div className="input">Country:<input placeholder="Country name" type="text" onChange={(event) => setCountry(event.target.value)} /></div>
+               <div className="Logo" ><img src = {require('./Beacon.png')} height="135px" width="300px"></img></div>
+               <div className="input">
+                   Name:&nbsp;&nbsp;&nbsp;<input  placeholder="Full name" type="text" onChange={(event) => setName(event.target.value)} />
+                   Country:<input placeholder="Country name" type="text" onChange={(event) => setCountry(event.target.value)} />
+                </div>
                <Link onClick={event => (!name || !country) ? event.preventDefault(): null} to={`/chat?name${name}&country${country}`}>
                <div className ="button"> <button id="button" type="submit">Enter Global Chat </button></div>
                </Link>

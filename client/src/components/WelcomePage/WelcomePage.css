@@ -16,23 +16,29 @@ body {
   }
   .InnerContainer{
   display: grid;
-  grid-template-rows: 40% 8% 20% ;
+  grid-template-rows: 40% 15% ;
   width: 80%;
   height: 80vh;
   background-color: white;
   justify-self: center;
   border-radius: 5px;
   margin-top: 8%;
+  min-width: 80%;
   }
   .Logo{
     justify-self: center;
+    margin-top: 40px;
+    margin-left: 50px;
+    
   }
   .input{
     justify-self: center;
+    display: grid;
   
   }
   .button{
     text-align: center;
+    margin-top: 40px;
   }
   #button{
     border-radius: 10%;
