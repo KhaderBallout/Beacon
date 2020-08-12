@@ -4,6 +4,7 @@ import Input from '../input/Input';
 import io from 'socket.io-client'
 import { useState, useEffect } from 'react'
 import queryString from 'query-string'
+import Map from '../map/Map'
 const Chat = ({ location }) => {
     const ENDPOINT = "http://localhost:5000"
     const [name ,setName] = useState('');
@@ -39,8 +40,8 @@ const Chat = ({ location }) => {
 
             </div>
 
-            <div className="right-panel">
-                <h1>map panel</h1>
+            <div id="right-panel">
+                <Map/>
             </div>
 
         </div>

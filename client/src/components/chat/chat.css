@@ -10,6 +10,11 @@
     grid-template-rows: 10% 75% 15%;
     height: 100vh;
 }
+#right-panel{
+    display: grid;
+    grid-template-rows: 20% 70%;
+    height: 100vh;
+}
 .navbar{
     background: #DEDEDE;
     text-align: center;
