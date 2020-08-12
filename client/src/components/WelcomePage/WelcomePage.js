@@ -12,7 +12,9 @@ const WelcomePage = () => {
     return (
         <div className="OuterContainer">
             <div className="InnerContainer">
-                <div className="Logo" ><img src={require('./Beacon.png')} height="200px" width="400px"></img></div>
+
+                <div className="Logo" ><img src={require('./Beacon.png')} alt={"logo"} height="200px" width="400px"></img></div>
+
 
                 <div className="inputGroup">
                     <label className="label" >Name:</label>
@@ -36,7 +38,9 @@ const WelcomePage = () => {
                         placeholder="Select Country"
                         onChange={(e) => setCity(e)} />
                 </div>
+
                 <Link onClick={event => (!name || !(country && city)) ? event.preventDefault() : null} to={`/chat?name=${name}&country=${country}&city=${city}`}>
+
                     <div className="button"> <button id="button" type="submit">Enter Global Chat </button></div>
                 </Link>
             </div>
