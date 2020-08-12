@@ -54,9 +54,7 @@ const Chat = ({ location }) => {
         <div className="main">
             <div className='left-panel'>
                 <div className="navbar">Global Chat</div>
-                {/* messaging panel */}
-
-                <div></div>
+                {/* <div><Messages /></div> */}
                 <div className='input'><Input message={message} setMessage={setMessage} send={send} /></div>
 
             </div>
