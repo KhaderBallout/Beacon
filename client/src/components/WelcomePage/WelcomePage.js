@@ -38,9 +38,8 @@ const WelcomePage = () => {
                         placeholder="Select Country"
                         onChange={(e) => setCity(e)} />
                 </div>
-
+                 {/* handle button event, if there is no name and no country/city then prevent btn click and do nth  */}
                 <Link onClick={event => (!name || !(country && city)) ? event.preventDefault() : null} to={`/chat?name=${name}&country=${country}&city=${city}`}>
-
                     <div className="button"> <button id="button" type="submit">Enter Global Chat </button></div>
                 </Link>
             </div>
