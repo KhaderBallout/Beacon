@@ -3,10 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+<<<<<<< HEAD
+    "material-ui": "^0.20.2",
+=======
     "mapbox-gl": "^1.11.1",
+>>>>>>> e6fb9ddbe8a692f51ad6292c2a8f8ea53455ef0a
     "query-string": "^6.13.1",
     "react": "^16.13.1",
     "react-country-region-selector": "^2.1.0",
