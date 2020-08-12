@@ -1,0 +1,38 @@
+#map{
+    background-color: #3B4043;
+    width: 100%;
+    height: 80%;
+    grid-area: 2;
+}
+
+.map-comp-container{
+    
+    margin: 0;
+    background-color: #3B4043;
+    height: 100vh;
+}
+
+.statistics{
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    display: block;
+}
+
+.leaflet-control-attribution a{
+    display: none;
+}
+.leaflet-container {
+    background-color:rgba(255,0,0,0.0);
+}
+
+.number{
+    padding-left: 40px;
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    color: #00E84E;
+    display: block;
+}
