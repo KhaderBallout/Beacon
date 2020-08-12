@@ -23,7 +23,6 @@ const addCountry = ({ city, country }) => {
 
 const addMessage = ({ name, country, message }) => {
     messages.push({ name, country, message })
-    console.log(messages);
     return { name, country, message }
 }
 

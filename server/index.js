@@ -26,12 +26,10 @@ io.on('connection', (socket) => { //client socket
         callback({ data });  //trigger response immediately after specific event has  emitted.
 
         // socket.broadcast('messages', getMessages());   //send message to everyone 
-
     })
 
     socket.on('send', ({ name, country, message }, callback) => {
        addMessage({ name, country, message });
-
 
         callback();
     })

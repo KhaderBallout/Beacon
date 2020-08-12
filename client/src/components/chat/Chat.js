@@ -5,12 +5,15 @@ import io from 'socket.io-client'
 import { useState, useEffect } from 'react'
 import queryString from 'query-string'
 import Map from '../map/Map'
+import Messages from '../Messages/Messages';
+
+
 const Chat = ({ location }) => {
     const ENDPOINT = "http://localhost:5000"
     const [name, setName] = useState('');
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState(''); //message from input
     const [messages, setMessages] = useState([]);
 
 
@@ -25,7 +28,8 @@ const Chat = ({ location }) => {
         setCity(city);
 
         socket.emit('join', { name, country, city }, ({ data }) => {
-            console.log({ data })    //this gonna be executed when the callback in server is called
+            console.log( data.messages )    //this gonna be executed when the callback in server is called
+            setMessages(data.messages)
         });
 
         return () => {  // specify how to clean up after that effect
@@ -37,10 +41,11 @@ const Chat = ({ location }) => {
 
     useEffect(() => {
         socket.on('message', (message) => {
-            setMessages(messages => [...messages, message]);
+            setMessages(messages => [...messages, message]);  //add all messages to array of messages
         })
 
     }, [messages]);
+
 
     const send = (e) => {
         e.preventDefault();
@@ -54,13 +59,13 @@ const Chat = ({ location }) => {
         <div className="main">
             <div className='left-panel'>
                 <div className="navbar">Global Chat</div>
-                {/* <div><Messages /></div> */}
-                <div className='input'><Input message={message} setMessage={setMessage} send={send} /></div>
+                <div><Messages name={name}  messages={messages} /></div>
+                <div className='input'><Input name={name} country={country} message={message} setMessage={setMessage} send={send} /></div>
 
             </div>
 
             <div id="right-panel">
-                <Map/>
+                <Map />
             </div>
 
         </div>
