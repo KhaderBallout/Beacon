@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './chat.css'
 import Input from '../input/Input';
 import io from 'socket.io-client'
@@ -12,28 +12,27 @@ const Chat = ({ location }) => {
     const ENDPOINT = "http://localhost:5000"
     const [name, setName] = useState('');
     const [country, setCountry] = useState('');
-    const [city, setCity] = useState('');
     const [message, setMessage] = useState(''); //message from input
     const [messages, setMessages] = useState([]);
 
 
 
     let socket = io(ENDPOINT);   //connect client socket with server
-    ;
+    
     useEffect(() => {
         const { name, country, city } = queryString.parse(location.search);  //getting data from url
 
         setName(name);
         setCountry(country);
-        setCity(city);
 
         socket.emit('join', { name, country, city }, ({ data }) => {
             console.log(data.messages)    //these gonna be executed when the callback in server is called
             setMessages(data.messages) //store the messages in backend 
+            socket.emit('req');
         });
 
         return () => {  // specify how to clean up after that effect
-            socket.emit('disconnect');
+            io.emit('disconnect');
             io.off()
         }
     }, [ENDPOINT, location.search])  // specify when the useEffect fnc is being called : (only if these two are changed)
