@@ -28,8 +28,8 @@ const Chat = ({ location }) => {
         setCity(city);
 
         socket.emit('join', { name, country, city }, ({ data }) => {
-            console.log( data.messages )    //this gonna be executed when the callback in server is called
-            setMessages(data.messages)
+            console.log(data.messages)    //these gonna be executed when the callback in server is called
+            setMessages(data.messages) //store the messages in backend 
         });
 
         return () => {  // specify how to clean up after that effect
@@ -40,18 +40,20 @@ const Chat = ({ location }) => {
 
 
     useEffect(() => {
-        socket.on('message', (message) => {
-            setMessages(messages => [...messages, message]);  //add all messages to array of messages
+        socket.on('message', ({ name, country, message }) => {
+            var temp= { name, country, message };
+            setMessages(messages => [...messages, temp]);  //add all messages as an object to the array of messages
         })
 
-    }, [messages]);
+    }, []);
 
 
     const send = (e) => {
         e.preventDefault();
 
         if (message) {
-            socket.emit('send', { name, country, message }, () => setMessage(''));
+            socket.emit('send', { name, country, message }, () =>
+             setMessage(''));
         }
     }
 
@@ -59,7 +61,7 @@ const Chat = ({ location }) => {
         <div className="main">
             <div className='left-panel'>
                 <div className="navbar">Global Chat</div>
-                <div><Messages name={name}  messages={messages} /></div>
+                <div><Messages name={name} messages={messages} /></div>
                 <div className='input'><Input name={name} country={country} message={message} setMessage={setMessage} send={send} /></div>
 
             </div>

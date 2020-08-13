@@ -25,13 +25,13 @@ io.on('connection', (socket) => { //client socket
         var data = addCountry({ city, country })
         callback({ data });  //trigger response immediately after specific event has  emitted.
 
-        // socket.broadcast('messages', getMessages());   //send message to everyone 
     })
 
-    socket.on('send', ({ name, country, message }, callback) => {
+    socket.on('send', ({ name, country, message }, callback) => {  
        addMessage({ name, country, message });
+       io.emit('message',{ name, country, message }); //to brodcast the message to every user
 
-        callback();
+        callback();  //every time the user presses on the btn, run this code"
     })
 
 
