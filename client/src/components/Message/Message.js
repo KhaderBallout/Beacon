@@ -2,14 +2,10 @@
 import './Message.css';
 import React, { useState, useEffect } from 'react';
 import ReactEmoji from 'react-emoji';
-import Avatar from '@material-ui/core/Avatar';
+import Avatar from './node_modules/@material-ui/core/Avatar';
 
-const Message = ({ message, name }) => {
-  let isSentByCurrentUser = false;
-
-  if (message.name == name) { //the current user is name, message.name the other person
-    isSentByCurrentUser = true;
-  }
+const Message = ({ name, message }) => {
+  let isSentByCurrentUser = true;
   return (
     isSentByCurrentUser
       ? (
@@ -17,7 +13,7 @@ const Message = ({ message, name }) => {
 
           <p className="sentText pr-10">{name}</p>
           <div className="messageBox backgroundBlue">
-            <p className="messageText colorWhite"> {message.message} </p>
+            <p className="messageText colorWhite"> {message} </p>
           </div>
           <Avatar className="mt ml" alt="Remy Sharp" src='' />
         </div>
@@ -26,9 +22,9 @@ const Message = ({ message, name }) => {
         <div className="messageContainer justifyStart">
           <Avatar className="mt mr" alt="Remy Sharp" src='' />
           <div className="messageBox backgroundLight">
-            <p className="messageText colorDark">{message.message}</p>
+            <p className="messageText colorDark">{message}</p>
           </div>
-          <p className="sentText pl-10 ">{message.name}</p>
+          <p className="sentText pl-10 ">{name}</p>
         </div>
       )
   );
