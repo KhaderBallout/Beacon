@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './chat.css'
-import Input from '../input/Input';
+import Input from '../Input/Input';
 import io from 'socket.io-client'
 import { useState, useEffect } from 'react'
 import queryString from 'query-string'
+
 const Chat = ({ location }) => {
     const ENDPOINT = "http://localhost:5000"
     const [name ,setName] = useState('');
