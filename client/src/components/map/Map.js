@@ -8,6 +8,7 @@ const Map = ({ country }) => {
   const [totalMessages, setTotalMessages] = useState("20000");
   const [totalUsers, setTotalUsers] = useState("15000");
   const [totalCountries, setTotalCountries] = useState("50");
+  
   console.log("Be ", country);
   const position = [countries['PS'].lat,countries['PS'].lon];
   console.log("Ae ", country);
@@ -34,8 +35,6 @@ const Map = ({ country }) => {
     L.circle(position).setRadius(600).addTo(map)
       .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
   }, []);
- 
-    
   return(
     <div className="map-comp-container">
       <div
