@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './chat.css'
-import Input from '../Input/Input';
+import Input from '../input/Input';
 import io from 'socket.io-client'
 import { useState, useEffect } from 'react'
 import queryString from 'query-string'
@@ -63,18 +63,17 @@ const Chat = ({ location }) => {
         <div className="main">
             <div className='left-panel'>
                 <div className="navbar">Global Chat</div>
-                <div><Messages name={name} messages={messages} /></div>
+                <div><Messages name={name} messages={messages} country={country}/></div>
                 <div className='input'><Input name={name} country={country} message={message} setMessage={setMessage} send={send} /></div>
 
             </div>
 
-            <div id="right-panel">
-                <Map />
-            </div>
+      <div id="right-panel">
+        <Map country={country} />
+      </div>
+    </div>
+    
+  );
+};
 
-        </div>
-    )
-}
-
-
-export default Chat
+export default Chat;
