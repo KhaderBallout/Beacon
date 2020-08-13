@@ -15,8 +15,10 @@ const addCountry = ({ city, country }) => {
     }
     return {
         country: country,
-        city: city, numOfCountries: Object.keys(countries).length,
-        numOfUsers: users, messages: getMessages()
+        city: city,
+        numOfCountries: Object.keys(countries).length,
+        numOfUsers: users,
+        messages: getMessages()
     }
 
 }
