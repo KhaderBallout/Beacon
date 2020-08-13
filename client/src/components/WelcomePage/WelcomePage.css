@@ -81,6 +81,8 @@ body {
     border-bottom-right-radius: 25px;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
+    text-decoration: none;
+    outline: none;
 }
 
 .country {
