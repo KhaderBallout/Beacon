@@ -74,3 +74,4 @@ const Chat = ({ location }) => {
 
 
 export default Chat
+ 
