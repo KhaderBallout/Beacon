@@ -4,7 +4,6 @@ var users = 0; //total number of users is the length of the array
 const countries = {}; //total number of countries is the length of values 
 const messages = []; //total number of messages is the length of the array
 
-
 const addCountry = ({ city, country }) => {
     //convert city or country to Country code
     //https://restcountries.eu/rest/v2/name/{NAME} This is the Api Example to get country code
@@ -22,9 +21,9 @@ const addCountry = ({ city, country }) => {
 
 }
 
-const addMessage = ({ name, country, text }) => {
-    messages.push({ name, country, text })
-    return { name, country, text }
+const addMessage = ({ name, country, message }) => {
+    messages.push({ name, country, message })
+    return { name, country, message }
 }
 
 const addUser = () => {
@@ -36,4 +35,8 @@ const getMessages = () => {
     return messages;
 }
 
-module.exports = { getMessages, addUser, addMessage, addCountry }
+const getUsers = () => {
+    return users;
+}
+
+module.exports = { getMessages, addUser, addMessage, addCountry, getUsers }
