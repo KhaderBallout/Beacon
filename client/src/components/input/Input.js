@@ -3,15 +3,17 @@ import React from 'react'
 
 import './Input.css'
 
-const Input = () => (
+const Input = ({message, setMessage, send}) => (
   <div className="form">
     
       <input
         className="input-box"
         type="text"
+        value= {message}
         placeholder="Send a supportive message :)"
+        onChange= {(e) => setMessage(e.target.value)}
      />
-      <button className="sendButton"></button>
+      <button className="sendButton" onClick= {(e)=> send(e)}></button>
   
   </div>
 )
