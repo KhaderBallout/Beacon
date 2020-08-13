@@ -29,7 +29,7 @@ io.on('connection', (socket) => { //client socket
 
     socket.on('send', ({ name, country, message }, callback) => {  
        addMessage({ name, country, message });
-       io.emit('message',{ name, country, message }); 
+       io.emit('message',{ name, country, message });
 
 
         callback();  //every time the user presses on the btn, run this code"

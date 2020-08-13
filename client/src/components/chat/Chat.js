@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './chat.css'
-import Input from '../input/Input';
+import Input from '../Input/Input';
 import io from 'socket.io-client'
 import { useState, useEffect } from 'react'
 import queryString from 'query-string'
@@ -45,7 +45,9 @@ const Chat = ({ location }) => {
             setMessages(messages => [...messages, temp]);  //add all messages as an object to the array of messages
         })
 
-    }, []);
+    }, []); // because we need to execute useeffect only once
+      
+   
 
 
     const send = (e) => {
