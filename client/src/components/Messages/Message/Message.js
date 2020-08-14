@@ -16,7 +16,7 @@ const Message = ({ message, name, country}) => {
 
           <p className="sentText pr-10">{name}</p>
           <div className="messageBox backgroundBlue">
-            <p className="messageText colorWhite"> {message.message} </p>
+            <p className="messageText colorWhite"> {ReactEmoji.emojify(message.message)} </p>
           </div>
           <Avatar className="mt ml" alt="Remy Sharp" src={require(`../../../flags/${country.toLowerCase()}.png`)} />
         </div>
