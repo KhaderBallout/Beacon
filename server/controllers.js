@@ -4,6 +4,10 @@ let countries = require('./countries')
 var users = 0; //total number of users is the length of the array
 const messages = []; //total number of messages is the length of the array
 
+const getInfo = () =>{
+    return {countries:countries,messages:messages.length,users:users}
+}
+
 const addCountry = ({ city, country }) => {
 
     if (countries[country]["num"] == 0) {
@@ -13,8 +17,10 @@ const addCountry = ({ city, country }) => {
     return {
         country: country,
         info:countries[country],
-        city: city, numOfCountries:  countries['total'],
-        numOfUsers: users, messages: getMessages()
+        city: city, 
+        numOfCountries:  countries['total'],
+        numOfUsers: users, 
+        messages: getMessages()
     }
 
 }
@@ -37,4 +43,4 @@ const getUsers = () => {
     return users;
 }
 
-module.exports = { getMessages, addUser, addMessage, addCountry, getUsers }
+module.exports = { getMessages, addUser, addMessage, addCountry, getUsers , getInfo}
