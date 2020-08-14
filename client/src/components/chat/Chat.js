@@ -1,6 +1,6 @@
 import React from 'react'
 import './chat.css'
-import Input from '../input/Input';
+import Input from '../Input/Input';
 import io from 'socket.io-client'
 import { useState, useEffect } from 'react'
 import queryString from 'query-string'
@@ -9,7 +9,7 @@ import Messages from '../Messages/Messages';
 
 
 const Chat = ({ location }) => {
-    const ENDPOINT = "http://localhost:5000"
+    const ENDPOINT = "http://85.184.63.149:5000"
     const [name, setName] = useState('');
     const [country, setCountry] = useState('');
     const [message, setMessage] = useState(''); //message from input
