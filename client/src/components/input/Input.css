@@ -1,8 +1,10 @@
-.form{
+.form {
     padding-top: 30px;
-    background-color: #DEDEDE
+    background-color: #DEDEDE;
+    height: 50px;
 }
-.input-box{
+
+.input-box {
     text-align: left;
     width: 500px;
     padding: 5px;
@@ -12,7 +14,21 @@
     text-decoration: none;
     outline: none;
 }
-.sendButton{
+
+.input-box[type="text"] {
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.input-box::placeholder {
+    font-size: 13px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
+    color: rgb(139, 145, 139);
+    font-weight: 700;
+}
+
+.sendButton {
     margin-left: 13px;
     border-radius: 16px;
     background: #00E84E url(send.png) no-repeat center;
@@ -21,8 +37,37 @@
     height: 35px;
     text-decoration: none;
     outline: none;
-    /* padding-top: 0px; */
+    cursor: pointer;
+}
 
+.emojiBtn {
+    /* margin-left: 12px; */
+    border-radius: 16px;
+    background: url(smile.png) no-repeat center;
+    background-color: none;
+    width: 70px;
+    height: 35px;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.emoji-mart {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    display: inline-block;
+    color: #222427;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    background: #fff;
+    position: absolute;
+    left: 0px;
+    bottom: 15vh;
+    width: 600px;
+}
+
+<<<<<<< HEAD
 }
 .emojiBtn{
     /* margin-left: 12px; */
@@ -34,4 +79,8 @@
     text-decoration: none;
     outline: none;
     border: none
+=======
+.emoji-mart-preview {
+    display: none;
+>>>>>>> 92685ea55db4fd0cd975766a8f92c5b2c99e0991
 }

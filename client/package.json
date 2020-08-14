@@ -8,7 +8,10 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "emoji-mart": "^3.0.0",
+<<<<<<< HEAD
     "emoji-picker-react": "^3.2.1",
+=======
+>>>>>>> 92685ea55db4fd0cd975766a8f92c5b2c99e0991
     "leaflet": "^1.6.0",
     "mapbox-gl": "^1.11.1",
     "query-string": "^6.13.1",
