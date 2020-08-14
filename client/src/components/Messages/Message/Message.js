@@ -1,11 +1,11 @@
 import './Message.css';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReactEmoji from 'react-emoji';
 import Avatar from '@material-ui/core/Avatar';
 
 const Message = ({ message, name, country}) => {
   let isSentByCurrentUser = false;
-  if (message.name == name) { //the current user is name, message.name the other person
+  if (message.name === name) { //the current user is name, message.name the other person
     isSentByCurrentUser = true;
   }
   return (

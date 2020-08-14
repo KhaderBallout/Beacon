@@ -2,26 +2,23 @@ import React, { useState, useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./map.css";
-let countries = require('../../countries')
-const Map = ({ country }) => {
-  const [coords, setCoords] = useState("");
-  const [totalMessages, setTotalMessages] = useState("20000");
-  const [totalUsers, setTotalUsers] = useState("15000");
-  const [totalCountries, setTotalCountries] = useState("50");
-  
-  console.log("Be ", country);
-  const position = [countries['PS'].lat,countries['PS'].lon];
-  console.log("Ae ", country);
-  var info = countries[country];
-  console.log("llllllllllll ", countries[country])
-  
+import io from "socket.io-client";
+const countries = require('../../countries')
+const Map = () => {
+  const [totalMessages, setTotalMessages] = useState("");
+  const [totalUsers, setTotalUsers] = useState("");
+  const [totalCountries, setTotalCountries] = useState("");
+
+  let socket = io("http://localhost:5000");
+
   useEffect(() => {
+
 
     var map = L.map("map", {
       center: [50, -2],
       zoom: 1,
       zoomControl: false,
-      maxZoom: 17,
+      maxZoom: 1.5,
       minZoom: 1.5,
       doubleClickZoom: false,
       dragging: false,
@@ -32,10 +29,31 @@ const Map = ({ country }) => {
         noWrap: true,
       }
     ).addTo(map);
-    L.circle(position).setRadius(600).addTo(map)
-      .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
+
+    socket.on('countries', ({ countries}) => {
+      setTotalCountries(countries.countries.total)
+      setTotalMessages(countries.messages)
+      setTotalUsers(countries.users)
+
+      for (const country in countries.countries) {
+
+        if (countries.countries[country].num > 0) {
+
+          L.circle([countries.countries[country].lat, countries.countries[country].lon], "radius:500").addTo(map)
+            .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
+
+        }
+      }
+      // console.log(countries[country].lat,countries[country].lat)
+      // L.circle([countries[country].lat, countries[country].lon], "radius:500").addTo(map)
+      //   .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
+
+    })
   }, []);
-  return(
+
+
+
+  return (
     <div className="map-comp-container">
       <div
         style={{
