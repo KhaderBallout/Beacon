@@ -9,7 +9,7 @@ const Map = () => {
   const [totalUsers, setTotalUsers] = useState("");
   const [totalCountries, setTotalCountries] = useState("");
 
-  let socket = io("http://85.184.63.149:5000");
+  let socket = io("http://Localhost:5000");
 
   useEffect(() => {
 

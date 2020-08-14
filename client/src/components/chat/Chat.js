@@ -8,7 +8,7 @@ import Map from '../map/Map'
 import Messages from '../Messages/Messages';
 
 const Chat = ({ location }) => {
-    const ENDPOINT = "http://85.184.63.149:5000"
+    const ENDPOINT = "http://Localhost:5000"
     const [name, setName] = useState('');
     const [country, setCountry] = useState('');
     const [message, setMessage] = useState(''); //message from input

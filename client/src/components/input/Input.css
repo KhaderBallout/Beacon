@@ -67,20 +67,6 @@
     width: 600px;
 }
 
-<<<<<<< HEAD
-}
-.emojiBtn{
-    /* margin-left: 12px; */
-    border-radius: 16px;
-    background: url(smile.png) no-repeat center;
-    background-color: none;
-    width: 70px;
-    height: 35px;
-    text-decoration: none;
-    outline: none;
-    border: none
-=======
 .emoji-mart-preview {
     display: none;
->>>>>>> 92685ea55db4fd0cd975766a8f92c5b2c99e0991
 }
