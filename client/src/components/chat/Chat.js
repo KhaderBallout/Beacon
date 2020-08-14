@@ -1,6 +1,6 @@
 import React from 'react'
 import './chat.css'
-import Input from '../input/Input';
+import Input from '../Input/Input';
 import io from 'socket.io-client'
 import { useState, useEffect } from 'react'
 import queryString from 'query-string'
@@ -34,7 +34,7 @@ const Chat = ({ location }) => {
 
     useEffect(() => {
         socket.on('message', ({ name, country, message }) => {
-            var temp= { name, country, message };
+            var temp = { name, country, message };
             setMessages(messages => [...messages, temp]);  //add all messages as an object to the array of messages
         })
 
@@ -44,7 +44,7 @@ const Chat = ({ location }) => {
         e.preventDefault();
         if (message) {
             socket.emit('send', { name, country, message }, () =>
-             setMessage(''));
+                setMessage(''));
         }
     }
 
@@ -52,17 +52,15 @@ const Chat = ({ location }) => {
         <div className="main">
             <div className='left-panel'>
                 <div className="navbar">Global Chat</div>
-                <div><Messages name={name} messages={messages} country={country}/></div>
+                <div><Messages name={name} messages={messages} country={country} /></div>
                 <div className='input'><Input name={name} country={country} message={message} setMessage={setMessage} send={send} /></div>
-
             </div>
+            <div id="right-panel">
+                <Map country={country} />
+            </div>
+        </div>
 
-      <div id="right-panel">
-        <Map country={country} />
-      </div>
-    </div>
-    
-  );
+    );
 };
 
 export default Chat;
