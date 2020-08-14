@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const app = express();
 const server = http.createServer(app);
-const { getMessages, addUser, addMessage, addCountry, getUsers } = require('./controllers')
+const { getInfo, getMessages, addUser, addMessage, addCountry, getUsers } = require('./controllers')
 
 //Using Router for handling Get request on Server Startup 
 const router = require('./router');
@@ -23,20 +23,34 @@ io.on('connection', (socket) => { //client socket
         console.log(name, " from (", city, ", ", country, ") has joined!")
         addUser();
         var data = addCountry({ city, country })
+
+
+        //send countries to user once they join
+
+        var countries = getInfo();
+        io.emit('countries', { countries });
+
+
+
         callback({ data });  //trigger response immediately after specific event has  emitted.
 
     })
 
-    socket.on('send', ({ name, country, message }, callback) => {  
-       addMessage({ name, country, message });
-       io.emit('message',{ name, country, message }); 
+    socket.on('send', ({ name, country, message }, callback) => {
+        addMessage({ name, country, message });
+        io.emit('message', ({ name, country, message }));
+
+        //resend here data of backend to map.js
+        var countries = getInfo();
+        io.emit('countries', { countries });
 
 
         callback();  //every time the user presses on the btn, run this code"
     })
 
 
-    socket.on('disconnect', () => {
-        console.log("A connection has been dropped")
-    })
+
+    // socket.on('disconnect', () => {
+    //     console.log("A connection has been dropped")
+    // })
 })

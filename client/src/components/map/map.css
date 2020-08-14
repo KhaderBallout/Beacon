@@ -36,3 +36,9 @@
     color: #00E84E;
     display: block;
 }
+
+
+.leaflet-interactive{
+    stroke-width: 10px;
+    stroke: red;
+}
