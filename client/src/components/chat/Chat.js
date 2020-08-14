@@ -7,7 +7,6 @@ import queryString from 'query-string'
 import Map from '../map/Map'
 import Messages from '../Messages/Messages';
 
-
 const Chat = ({ location }) => {
     const ENDPOINT = "http://localhost:5000"
     const [name, setName] = useState('');
@@ -18,7 +17,7 @@ const Chat = ({ location }) => {
 
 
     let socket = io(ENDPOINT);   //connect client socket with server
-    
+
     useEffect(() => {
         const { name, country, city } = queryString.parse(location.search);  //getting data from url
 
@@ -40,13 +39,13 @@ const Chat = ({ location }) => {
 
     useEffect(() => {
         socket.on('message', ({ name, country, message }) => {
-            var temp= { name, country, message };
+            var temp = { name, country, message };
             setMessages(messages => [...messages, temp]);  //add all messages as an object to the array of messages
         })
 
     }, []); // because we need to execute useeffect only once
-      
-   
+
+
 
 
     const send = (e) => {
@@ -54,7 +53,7 @@ const Chat = ({ location }) => {
 
         if (message) {
             socket.emit('send', { name, country, message }, () =>
-             setMessage(''));
+                setMessage(''));
         }
     }
 
@@ -62,17 +61,15 @@ const Chat = ({ location }) => {
         <div className="main">
             <div className='left-panel'>
                 <div className="navbar">Global Chat</div>
-                <div><Messages name={name} messages={messages} country={country}/></div>
+                <div><Messages name={name} messages={messages} country={country} /></div>
                 <div className='input'><Input name={name} country={country} message={message} setMessage={setMessage} send={send} /></div>
-
             </div>
+            <div id="right-panel">
+                <Map country={country} />
+            </div>
+        </div>
 
-      <div id="right-panel">
-        <Map country={country} />
-      </div>
-    </div>
-    
-  );
+    );
 };
 
 export default Chat;
