@@ -32,10 +32,10 @@ const Chat = ({ location }) => {
             setMessages(data.messages) //store the messages in backend 
         });
 
-        return () => {  // specify how to clean up after that effect
-            socket.emit('disconnect');
-            io.off()
-        }
+        // return () => {  // specify how to clean up after that effect
+        //     socket.emit('disconnect');
+        //     io.off()
+        // }
     }, [ENDPOINT, location.search])  // specify when the useEffect fnc is being called : (only if these two are changed)
 
 
@@ -47,9 +47,6 @@ const Chat = ({ location }) => {
 
     }, []); // because we need to execute useeffect only once
       
-   
-
-
     const send = (e) => {
         e.preventDefault();
 
