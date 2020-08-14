@@ -40,7 +40,7 @@ const Map = () => {
         if (countries.countries[country].num > 0) {
 
           L.circle([countries.countries[country].lat, countries.countries[country].lon], "radius:500").addTo(map)
-            .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
+            .bindPopup(`Number Of Users: ${countries.countries[country].num}`)
 
         }
       }
