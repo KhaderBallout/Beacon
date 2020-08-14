@@ -9,7 +9,7 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    min-height: 99vh;
+    min-height: 100vh;
     display: grid;
     grid-template-columns: 50% 50%;
 }
@@ -81,6 +81,8 @@ body {
     border-bottom-right-radius: 25px;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
+    text-decoration: none;
+    outline: none;
 }
 
 .country {
