@@ -1,6 +1,7 @@
 .form {
     padding-top: 30px;
-    background-color: #DEDEDE
+    background-color: #DEDEDE;
+    height: 50px;
 }
 
 .input-box {
@@ -14,6 +15,19 @@
     outline: none;
 }
 
+.input-box[type="text"] {
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.input-box::placeholder {
+    font-size: 13px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
+    color: rgb(139, 145, 139);
+    font-weight: 700;
+}
+
 .sendButton {
     margin-left: 13px;
     border-radius: 16px;
@@ -23,7 +37,7 @@
     height: 35px;
     text-decoration: none;
     outline: none;
-    /* padding-top: 0px; */
+    cursor: pointer;
 }
 
 .emojiBtn {
@@ -35,5 +49,6 @@
     height: 35px;
     text-decoration: none;
     outline: none;
-    border: none
+    border: none;
+    cursor: pointer;
 }

@@ -8,7 +8,7 @@ const Input = ({ message, setMessage, send }) => {
   let emojiPicker;
   if (display) {
     emojiPicker = (
-      <Picker
+      <Picker className="emoji-mart-scroll"
         title="Pick your emoji…"
         emoji="point_up"
         onSelect={emoji => setMessage(message + emoji.native)}
@@ -19,10 +19,13 @@ const Input = ({ message, setMessage, send }) => {
     e.preventDefault();
     setDisplay(!display)
   }
+  function btnEvent(e) {
+    e.preventDefault();
+    setDisplay(false);
+  }
   return (
     <div className="form">
-      <input
-        className="input-box"
+      <input className="input-box"
         type="text"
         value={message}
         placeholder="Send a supportive message :)"
@@ -30,7 +33,7 @@ const Input = ({ message, setMessage, send }) => {
         onKeyPress={(e => e.key === 'Enter' ? send(e) : null)}
       />
       {emojiPicker}
-      <button className="sendButton" onClick={(e) => { send(e); emojiEvent(e) }}></button>
+      <button className="sendButton" onClick={(e) => { send(e); btnEvent(e) }}></button>
       <button className="emojiBtn" onClick={emojiEvent} />
     </div>
   );
