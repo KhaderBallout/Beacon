@@ -2,7 +2,8 @@ const express = require('express');
 const http = require('http');
 const app = express();
 const server = http.createServer(app);
-const { getInfo, getMessages, addUser, addMessage, addCountry, getUsers } = require('./controllers')
+const
+const { getInfo, addUser, addMessage, addCountry} = require('./controllers')
 
 //Using Router for handling Get request on Server Startup 
 const router = require('./router');
@@ -24,14 +25,9 @@ io.on('connection', (socket) => { //client socket
         addUser();
         var data = addCountry({ city, country })
 
-
         //send countries to user once they join
-
         var countries = getInfo();
         io.emit('countries', { countries });
-
-
-
         callback({ data });  //trigger response immediately after specific event has  emitted.
 
     })
@@ -48,9 +44,4 @@ io.on('connection', (socket) => { //client socket
         callback();  //every time the user presses on the btn, run this code"
     })
 
-
-
-    // socket.on('disconnect', () => {
-    //     console.log("A connection has been dropped")
-    // })
 })
