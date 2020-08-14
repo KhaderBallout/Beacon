@@ -8,7 +8,7 @@ import Map from '../map/Map'
 import Messages from '../Messages/Messages';
 
 const Chat = ({ location }) => {
-    const ENDPOINT = "http://localhost:5000"
+    const ENDPOINT = "https://beacon-by-root.herokuapp.com/"
     const [name, setName] = useState('');
     const [country, setCountry] = useState('');
     const [message, setMessage] = useState(''); //message from input
