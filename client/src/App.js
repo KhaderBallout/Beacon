@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Chat from './components/Chat/Chat';
+import Chat from './components/chat/Chat';
 // import Join from './components/Join/Join';
 import WelcomePage from './components/WelcomePage/WelcomePage'
 
