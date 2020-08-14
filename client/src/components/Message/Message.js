@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import ReactEmoji from 'react-emoji';
 import Avatar from './node_modules/@material-ui/core/Avatar';
 
+
 const Message = ({ name, message }) => {
   let isSentByCurrentUser = true;
   return (
@@ -13,7 +14,7 @@ const Message = ({ name, message }) => {
 
           <p className="sentText pr-10">{name}</p>
           <div className="messageBox backgroundBlue">
-            <p className="messageText colorWhite"> {message} </p>
+            <p className="messageText colorWhite"> {ReactEmoji.emojify(message)} </p>
           </div>
           <Avatar className="mt ml" alt="Remy Sharp" src='' />
         </div>
@@ -22,7 +23,7 @@ const Message = ({ name, message }) => {
         <div className="messageContainer justifyStart">
           <Avatar className="mt mr" alt="Remy Sharp" src='' />
           <div className="messageBox backgroundLight">
-            <p className="messageText colorDark">{message}</p>
+            <p className="messageText colorDark">{ReactEmoji.emojify(message)}</p>
           </div>
           <p className="sentText pl-10 ">{name}</p>
         </div>

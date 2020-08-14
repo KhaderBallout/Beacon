@@ -5,12 +5,11 @@ import { Picker } from "emoji-mart";
 const Input = ({ message, setMessage, send }) => {
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const [display, setDisplay] = useState(false);
+  
   let emojiPicker;
   if (display) {
     emojiPicker = (
-      <Picker className="emoji-mart-scroll"
-        title="Pick your emoji…"
-        emoji="point_up"
+      <Picker style={{ width: "stretch"}}
         onSelect={emoji => setMessage(message + emoji.native)}
       />
     );
