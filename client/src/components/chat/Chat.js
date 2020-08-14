@@ -7,7 +7,6 @@ import queryString from 'query-string'
 import Map from '../map/Map'
 import Messages from '../Messages/Messages';
 
-
 const Chat = ({ location }) => {
     const ENDPOINT = "http://localhost:5000"
     const [name, setName] = useState('');
@@ -15,13 +14,9 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState(''); //message from input
     const [messages, setMessages] = useState([]);
 
-
-
     let socket = io(ENDPOINT);   //connect client socket with server
-    
     useEffect(() => {
         const { name, country, city } = queryString.parse(location.search);  //getting data from url
-
         setName(name);
         setCountry(country);
 
@@ -31,19 +26,11 @@ const Chat = ({ location }) => {
             socket.emit('req');
         });
 
-<<<<<<< HEAD
-        // return () => {  // specify how to clean up after that effect
-        //     socket.emit('disconnect');
-        //     io.off()
-        // }
-=======
         return () => {  // specify how to clean up after that effect
             io.emit('disconnect');
             io.off()
         }
->>>>>>> 7a02dd32a03635a9108dc91edd4520d823b2fde8
     }, [ENDPOINT, location.search])  // specify when the useEffect fnc is being called : (only if these two are changed)
-
 
     useEffect(() => {
         socket.on('message', ({ name, country, message }) => {
@@ -55,7 +42,6 @@ const Chat = ({ location }) => {
       
     const send = (e) => {
         e.preventDefault();
-
         if (message) {
             socket.emit('send', { name, country, message }, () =>
              setMessage(''));

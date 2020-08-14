@@ -2,23 +2,9 @@ const axios = require('axios');
 
 let countries = require('./countries')
 var users = 0; //total number of users is the length of the array
- //total number of countries is the length of values 
 const messages = []; //total number of messages is the length of the array
 
 const addCountry = ({ city, country }) => {
-    //convert city or country to Country code
-    //https://restcountries.eu/rest/v2/name/{NAME} This is the Api Example to get country code
-    // ps = {code: ps, number: 5}
-    console.log(countries[country]['num']);
-    /* countries = {
-         "PS":{
-             num: 55,
-             lan:31.0,
-             lon:35.0
-         },
-         "AE":51
-    }
-    */
 
     if (countries[country]["num"] == 0) {
         countries['total'] += 1;

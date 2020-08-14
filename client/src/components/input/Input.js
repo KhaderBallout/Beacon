@@ -5,7 +5,6 @@ import './Input.css'
 
 const Input = ({ message, setMessage, send }) => (
   <div className="form">
-
     <input
       className="input-box"
       type="text"
@@ -18,7 +17,5 @@ const Input = ({ message, setMessage, send }) => (
 
   </div>
 )
-
-
 
 export default Input
