@@ -1,6 +1,6 @@
 import React from 'react'
 import './chat.css'
-import Input from '../Input/Input';
+import Input from '../input/Input';
 import io from 'socket.io-client'
 import { useState, useEffect } from 'react'
 import queryString from 'query-string'
@@ -14,13 +14,9 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState(''); //message from input
     const [messages, setMessages] = useState([]);
 
-
-
     let socket = io(ENDPOINT);   //connect client socket with server
-
     useEffect(() => {
         const { name, country, city } = queryString.parse(location.search);  //getting data from url
-
         setName(name);
         setCountry(country);
 
@@ -36,7 +32,6 @@ const Chat = ({ location }) => {
         }
     }, [ENDPOINT, location.search])  // specify when the useEffect fnc is being called : (only if these two are changed)
 
-
     useEffect(() => {
         socket.on('message', ({ name, country, message }) => {
             var temp = { name, country, message };
@@ -44,13 +39,9 @@ const Chat = ({ location }) => {
         })
 
     }, []); // because we need to execute useeffect only once
-
-
-
-
+      
     const send = (e) => {
         e.preventDefault();
-
         if (message) {
             socket.emit('send', { name, country, message }, () =>
                 setMessage(''));
