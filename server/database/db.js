@@ -10,5 +10,5 @@ db.once("open", function () {
 });
 
 module.exports = {
-  User: require('./models/user'),
+  message: require('./models/message'),
 }
