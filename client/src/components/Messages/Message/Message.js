@@ -1,4 +1,3 @@
-
 import './Message.css';
 import React from 'react';
 import ReactEmoji from 'react-emoji';
