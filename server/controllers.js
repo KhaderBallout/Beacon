@@ -35,7 +35,7 @@ const addMessage = ({ name, country, message }) => {
 }
 
 const addUser = () => {
-    users += 1;
+    // let totalNumOfUsers= db.collection.update( {$inc: { totalNumberOfUsers: 1 }});
     console.log("Number of current users", users)
 }
 
