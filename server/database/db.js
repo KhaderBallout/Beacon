@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const URI = "";
+const URI = "mongodb+srv://mays:123456789Root@beaconv02.8aghd.mongodb.net/BeaconV02?retryWrites=true&w=majority";
 
 mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
