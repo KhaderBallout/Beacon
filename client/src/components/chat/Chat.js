@@ -1,6 +1,6 @@
 import React from 'react'
 import './chat.css'
-import Input from '../Input/Input';
+import Input from '../input/Input';
 import io from 'socket.io-client'
 import { useState, useEffect } from 'react'
 import queryString from 'query-string'
