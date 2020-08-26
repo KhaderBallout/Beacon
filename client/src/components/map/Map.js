@@ -8,12 +8,9 @@ const Map = () => {
   const [totalMessages, setTotalMessages] = useState("");
   const [totalUsers, setTotalUsers] = useState("");
   const [totalCountries, setTotalCountries] = useState("");
-
-  let socket = io("http://Localhost:5000");
+  let socket = io("http://localhost:5000");
 
   useEffect(() => {
-
-
     var map = L.map("map", {
       center: [50, -2],
       zoom: 1,
@@ -29,29 +26,23 @@ const Map = () => {
         noWrap: true,
       }
     ).addTo(map);
-
+    
     socket.on('countries', ({ countries}) => {
       setTotalCountries(countries.countries.total)
       setTotalMessages(countries.messages)
       setTotalUsers(countries.users)
-
+      
       for (const country in countries.countries) {
-
+        
         if (countries.countries[country].num > 0) {
-
+          
           L.circle([countries.countries[country].lat, countries.countries[country].lon], "radius:500").addTo(map)
-            .bindPopup(`Number Of Users: ${countries.countries[country].num}`)
-
+          .bindPopup(`Number Of Users: ${countries.countries[country].num}`)
+          
         }
       }
-      // console.log(countries[country].lat,countries[country].lat)
-      // L.circle([countries[country].lat, countries[country].lon], "radius:500").addTo(map)
-      //   .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
-
     })
   }, []);
-
-
 
   return (
     <div className="map-comp-container">
