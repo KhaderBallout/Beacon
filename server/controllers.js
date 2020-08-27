@@ -3,7 +3,8 @@ let countries = require('./countries')
 var users = 0; //total number of users is the length of the array
 const messages = []; //total number of messages is the length of the array
 const db = require('./database/db')
-const { response } = require('express')
+const { response } = require('express');
+const { total } = require('./countries');
 
 const getInfo = () => {
     return { countries: countries, messages: messages.length, users: users }
@@ -36,6 +37,10 @@ const addMessage = ({ name, country, message }) => {
 
 const addUser = () => {
     // let totalNumOfUsers= db.collection.update( {$inc: { totalNumberOfUsers: 1 }});
+    let userID = "5f46902c02585e5d168d56ce"
+    db.totals.findByIdAndUpdate(userID, {$inc: { totalNumberOfUsers: 1 }})
+        .then(() => {
+        })
     console.log("Number of current users", users)
 }
 
