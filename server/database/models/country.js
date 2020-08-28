@@ -1,7 +1,11 @@
 const mongoose = require('mongoose')
 
 const countrySchema = new mongoose.Schema({
-    numOfUsers: {
+
+    code: {
+        type: String
+    },
+    num: {
         type: Number
     },
     lat: {
@@ -9,7 +13,7 @@ const countrySchema = new mongoose.Schema({
     },
     lon: {
         type: Number
-    }
+    },
 },
     { timestamps: true })
 
