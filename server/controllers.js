@@ -1,7 +1,7 @@
 const axios = require('axios');
-let countries = require('./countries')
+var countries = require('./countries')
 var users = 0; //total number of users is the length of the array
-const messages = []; //total number of messages is the length of the array
+var messages = []; //total number of messages is the length of the array
 const db = require('./database/db')
 const { response } = require('express')
 
@@ -11,35 +11,14 @@ const getInfo = () => {
 
 const addCountry = ({ city, country }) => {
 
-    // if (countries[country]['num'] == 0) {
-    //     let countryDb = new db.country({ key: country, numOfUsers: 1, lat: countries[country]['lat'], lon: countries[country]['lon'] })
-    //     countryDb.save().then(response => {
-    //         console.log("response", response)
-    //     })
-    // }
-    db.country.findOne({ code: country }).then(resp => {
-        if (resp != null) {
-            db.country.findByIdAndUpdate(resp._id, { $inc: { num: 1 } })
-                .then(() => {
-                })
-
-        }
-        else {
-            let countryDb = new db.country({ code: country, num: 1, lat: countries[country]["lat"], lon: countries[country]["lon"] })
-            countryDb.save().then(response => {
-                console.log("response", response)
-            })
-            let userID = "5f46902c02585e5d168d56ce"
-            db.totals.findByIdAndUpdate(userID, { $inc: { totalNumberOfCountries: 1 } })
-                .then(res => {
-                    totalCountries = res.totalNumberOfCountries;
-
-                    totalUsers = res.totalNumberOfUsers;
-                    totalMessages = res.totalNumberOfMessages;
-                })
-        }
-    })
-
+    if (countries[country]["num"] == 0) {
+        let countryDb = new db.country({ code: country, num: 1, lat: countries[country]["lat"], lon: countries[country]["lon"] })
+        countryDb.save().then(response => {
+            console.log("response", response)
+        })
+        countries['total'] += 1;
+    }
+    countries[country]['num'] += 1;
     return {
         country: country,
         info: countries[country],
@@ -56,28 +35,48 @@ const addMessage = ({ name, country, message }) => {
     messageDb.save().then(response => {
         console.log("response", response)
     })
-    let userID = "5f46902c02585e5d168d56ce"
-    db.totals.findByIdAndUpdate(userID, { $inc: { totalNumberOfMessages: 1 } })
-        .then(() => {
-        })
+    messages.push({ name, country, message })
     return { name, country, message }
 }
 
 const addUser = () => {
-    // let totalNumOfUsers= db.collection.update( {$inc: { totalNumberOfUsers: 1 }});
-    let userID = "5f46902c02585e5d168d56ce"
-    db.totals.findByIdAndUpdate(userID, { $inc: { totalNumberOfUsers: 1 } })
-        .then(() => {
-        })
+    users += 1;
     console.log("Number of current users", users)
+}
+
+const setUsers = (arg) => {
+    users = arg
+    console.log("new total users is", arg)
 }
 
 const getMessages = () => {
     return messages;
 }
 
+const setMessages = (arg) => {
+    messages = arg
+    console.log(arg)
+}
+
 const getUsers = () => {
     return users;
 }
 
-module.exports = { getMessages, addUser, addMessage, addCountry, getUsers, getInfo, }
+
+const setNumOfCountries = (arg) => {
+    countries['total'] = arg
+    console.log("new total countries is", arg)
+}
+
+const setCountries = (arg) => {
+    arg.forEach(element => {
+        countries[element.code]["num"] = element.num
+        console.log(element.code, countries[element.code])
+    });
+}
+const getCountries = () => {
+    console.log("Countries el total =",countries.total)
+    return countries.total
+}
+
+module.exports = { getMessages, addUser, setUsers, addMessage, setMessages, addCountry, getCountries, setNumOfCountries, setCountries, getUsers, getInfo, }
