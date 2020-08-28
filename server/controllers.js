@@ -12,10 +12,35 @@ const getInfo = () => {
 
 const addCountry = ({ city, country }) => {
 
-    if (countries[country]["num"] == 0) {
-        countries['total'] += 1;
-    }
-    countries[country]['num'] += 1;
+    // if (countries[country]['num'] == 0) {
+    //     let countryDb = new db.country({ key: country, numOfUsers: 1, lat: countries[country]['lat'], lon: countries[country]['lon'] })
+    //     countryDb.save().then(response => {
+    //         console.log("response", response)
+    //     })
+    // }
+    db.country.findOne({ code: country }).then(resp => {
+        if (resp != null) {
+            db.country.findByIdAndUpdate(resp._id, { $inc: { num: 1 } })
+                .then(() => {
+                })
+
+        }
+        else {
+            let countryDb = new db.country({ code: country, num: 1, lat: countries[country]["lat"], lon: countries[country]["lon"] })
+            countryDb.save().then(response => {
+                console.log("response", response)
+            })
+            let userID = "5f46902c02585e5d168d56ce"
+            db.totals.findByIdAndUpdate(userID, { $inc: { totalNumberOfCountries: 1 } })
+                .then(res => {
+                    totalCountries = res.totalNumberOfCountries;
+
+                    totalUsers = res.totalNumberOfUsers;
+                    totalMessages = res.totalNumberOfMessages;
+                })
+        }
+    })
+
     return {
         country: country,
         info: countries[country],
@@ -32,13 +57,21 @@ const addMessage = ({ name, country, message }) => {
     messageDb.save().then(response => {
         console.log("response", response)
     })
+    let userID = "5f46902c02585e5d168d56ce"
+    db.totals.findByIdAndUpdate(userID, { $inc: { totalNumberOfMessages: 1 } })
+        .then(() => {
+        })
     return { name, country, message }
 }
 
 const addUser = () => {
     // let totalNumOfUsers= db.collection.update( {$inc: { totalNumberOfUsers: 1 }});
     let userID = "5f46902c02585e5d168d56ce"
+<<<<<<< HEAD
     db.totals.findByIdAndUpdate(userID, {$inc: { totalNumberOfUsers: 1 }})
+=======
+    db.totals.findByIdAndUpdate(userID, { $inc: { totalNumberOfUsers: 1 } })
+>>>>>>> 35b25c7ac6602668b942e6aabdb5795cf22a0e14
         .then(() => {
         })
     console.log("Number of current users", users)
